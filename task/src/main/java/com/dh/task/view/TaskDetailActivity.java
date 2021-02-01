@@ -1,4 +1,4 @@
-package com.dh.architecture.view;
+package com.dh.task.view;
 
 import android.os.Bundle;
 
@@ -6,11 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.dh.architecture.R;
-import com.dh.architecture.data.source.TasksRepository;
-import com.dh.architecture.data.source.local.TasksLocalDataSource;
-import com.dh.architecture.data.source.remote.TasksRemoteDataSource;
-import com.dh.architecture.databinding.TasksActivityBinding;
+import com.dh.task.R;
+import com.dh.task.data.source.TasksRepository;
+import com.dh.task.data.source.local.TasksLocalDataSource;
+import com.dh.task.data.source.remote.TasksRemoteDataSource;
+import com.dh.task.databinding.TasksActivityBinding;
 
 /**
  * Created by Jin on 2020/10/27.

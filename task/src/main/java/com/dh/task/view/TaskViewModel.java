@@ -1,4 +1,4 @@
-package com.dh.architecture.view;
+package com.dh.task.view;
 
 import android.content.Context;
 
@@ -7,8 +7,8 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
 
-import com.dh.architecture.data.Task;
-import com.dh.architecture.data.source.TasksRepository;
+import com.dh.task.data.Task;
+import com.dh.task.data.source.TasksRepository;
 import com.dh.core.callback.DataCallback;
 
 import java.util.List;

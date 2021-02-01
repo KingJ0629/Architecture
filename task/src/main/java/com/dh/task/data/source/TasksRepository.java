@@ -1,14 +1,14 @@
-package com.dh.architecture.data.source;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+package com.dh.task.data.source;
 
 import androidx.annotation.NonNull;
 
-import com.dh.architecture.data.Task;
 import com.dh.core.callback.DataCallback;
+import com.dh.task.data.Task;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by Jin on 2020/10/26.
@@ -56,7 +56,7 @@ public class TasksRepository implements TasksDataSource {
      * 作为MVVM架构下的M层，把数据源和具体业务分离
      */
     @Override
-    public void getTasks(@NonNull DataCallback<List<Task>> callback) {
+    public void getTasks(@NonNull final DataCallback<List<Task>> callback) {
         checkNotNull(callback);
 
         if (mCachedTasks != null && !mCacheIsDirty) {

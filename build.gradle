@@ -26,9 +26,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-ext {
-    guavaVersion = '18.0'
-    espressoVersion = '3.0.1'
-    roomVersion = "1.0.0"
-}

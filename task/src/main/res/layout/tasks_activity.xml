@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.dh.architecture.view.TaskViewModel" />
+            type="com.dh.task.view.TaskViewModel" />
     </data>
 
     <RelativeLayout

@@ -1,10 +1,10 @@
-package com.dh.architecture.data.source.local;
+package com.dh.task.data.source.local;
 
 import androidx.annotation.NonNull;
 
-import com.dh.architecture.data.Task;
-import com.dh.architecture.data.source.TasksDataSource;
 import com.dh.core.callback.DataCallback;
+import com.dh.task.data.Task;
+import com.dh.task.data.source.TasksDataSource;
 
 import java.util.List;
 
