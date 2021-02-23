@@ -2,14 +2,16 @@ package com.dh.task.data.source.remote;
 
 import androidx.annotation.NonNull;
 
+import com.dh.core.callback.DataCallback;
 import com.dh.task.data.Task;
 import com.dh.task.data.source.TasksDataSource;
-import com.dh.core.callback.DataCallback;
 import com.google.common.collect.Lists;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.inject.Inject;
 
 /**
  * Created by Jin on 2020/10/26.
@@ -17,7 +19,7 @@ import java.util.Map;
  */
 public class TasksRemoteDataSource implements TasksDataSource {
 
-    private static TasksRemoteDataSource INSTANCE;
+    private TaskService mTaskService;
 
     private final static Map<String, Task> TASKS_SERVICE_DATA;
 
@@ -41,18 +43,15 @@ public class TasksRemoteDataSource implements TasksDataSource {
         addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!", "18");
     }
 
-    public static TasksRemoteDataSource getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new TasksRemoteDataSource();
-        }
-        return INSTANCE;
+    @Inject
+    public TasksRemoteDataSource(TaskService mTaskService) {
+        this.mTaskService = mTaskService;
     }
-
-    private TasksRemoteDataSource() {}
 
     @Override
     public void getTasks(@NonNull DataCallback<List<Task>> callback) {
         callback.onDataLoaded(Lists.newArrayList(TASKS_SERVICE_DATA.values()));
+        mTaskService.taskList(1);
     }
 
     @Override

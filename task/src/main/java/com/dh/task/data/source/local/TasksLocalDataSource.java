@@ -8,22 +8,18 @@ import com.dh.task.data.source.TasksDataSource;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by Jin on 2020/10/26.
  * Description 本地数据源
  */
 public class TasksLocalDataSource implements TasksDataSource {
 
-    private static TasksLocalDataSource INSTANCE;
+    @Inject
+    public TasksLocalDataSource() {
 
-    public static TasksLocalDataSource getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new TasksLocalDataSource();
-        }
-        return INSTANCE;
     }
-
-    private TasksLocalDataSource() {}
 
     @Override
     public void getTasks(@NonNull DataCallback<List<Task>> callback) {

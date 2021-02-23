@@ -8,6 +8,9 @@ import com.dh.task.data.Task;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
@@ -15,8 +18,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Description 数据仓库
  */
 public class TasksRepository implements TasksDataSource {
-
-    private static TasksRepository INSTANCE = null;
 
     private final TasksDataSource mTasksRemoteDataSource;
     private final TasksDataSource mTasksLocalDataSource;
@@ -31,22 +32,11 @@ public class TasksRepository implements TasksDataSource {
      */
     boolean mCacheIsDirty = false;
 
-    private TasksRepository(@NonNull TasksDataSource tasksRemoteDataSource,
-                            @NonNull TasksDataSource tasksLocalDataSource) {
+    @Inject
+    public TasksRepository(@Named("remote") TasksDataSource tasksRemoteDataSource,
+                           @Named("local") TasksDataSource tasksLocalDataSource) {
         mTasksRemoteDataSource = checkNotNull(tasksRemoteDataSource);
         mTasksLocalDataSource = checkNotNull(tasksLocalDataSource);
-    }
-
-    /**
-     * 单例
-     * @return the {@link TasksRepository} instance
-     */
-    public static TasksRepository getInstance(TasksDataSource tasksRemoteDataSource,
-                                              TasksDataSource tasksLocalDataSource) {
-        if (INSTANCE == null) {
-            INSTANCE = new TasksRepository(tasksRemoteDataSource, tasksLocalDataSource);
-        }
-        return INSTANCE;
     }
 
     /**

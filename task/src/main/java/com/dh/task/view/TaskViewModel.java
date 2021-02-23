@@ -13,6 +13,10 @@ import com.dh.core.callback.DataCallback;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.qualifiers.ActivityContext;
+
 /**
  * Created by Jin on 2020/10/27.
  * Description VM
@@ -27,7 +31,8 @@ public class TaskViewModel extends BaseObservable {
 
     private Context mContext;
 
-    public TaskViewModel(Context context, TasksRepository tasksRepository) {
+    @Inject
+    public TaskViewModel(@ActivityContext Context context, TasksRepository tasksRepository) {
         // 必须是ApplicationContext 因为viewModel的生命周期要大于activity的生命周期
         mContext = context.getApplicationContext();
         mTasksRepository = tasksRepository;
