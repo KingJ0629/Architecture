@@ -6,7 +6,7 @@ import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableList
 import com.dh.core.callback.DataCallback
-import com.dh.task.data.Task
+import com.dh.task_api.entity.Task
 import com.dh.task.data.source.TasksRepository
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject

@@ -1,7 +1,7 @@
 package com.dh.task.data.source.local
 
 import com.dh.core.callback.DataCallback
-import com.dh.task.data.Task
+import com.dh.task_api.entity.Task
 import com.dh.task.data.source.TasksDataSource
 import javax.inject.Inject
 

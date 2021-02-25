@@ -1,4 +1,4 @@
-package com.dh.task.data
+package com.dh.task_api.entity
 
 /**
  * Created by Jin on 2021/2/25.

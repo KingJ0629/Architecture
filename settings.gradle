@@ -1,3 +1,5 @@
+include ':test'
+include ':task-api'
 include ':task'
 include ':core'
 include ':app'

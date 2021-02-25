@@ -1,7 +1,7 @@
 package com.dh.task.data.source
 
 import com.dh.core.callback.DataCallback
-import com.dh.task.data.Task
+import com.dh.task_api.entity.Task
 
 /**
  * Created by Jin on 2021/2/24.
