@@ -18,6 +18,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class TaskDetailActivity : BaseVMActivity<TaskViewModel>() {
 
+    lateinit var viewModel: TaskViewModel
+
     @Inject
     lateinit var tasksRepository: TasksRepository
 
@@ -29,10 +31,11 @@ class TaskDetailActivity : BaseVMActivity<TaskViewModel>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tasks_activity)
 
-        viewModel?.description?.observe(this, Observer {
+        viewModel = getViewModel()
+        viewModel.description.observe(this, Observer {
             descriptionView.text = it
         })
-        viewModel?.loadTasks()
+        viewModel.loadTasks()
 
         clickLayout.setOnClickListener {
             ARouter.getInstance().build(Constants.TEST_ACTIVITY).navigation()

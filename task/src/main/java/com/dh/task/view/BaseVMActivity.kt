@@ -9,18 +9,11 @@ import androidx.lifecycle.ViewModelProvider
  * Created by Jin on 2021/2/25.
  * Description
  */
-abstract class BaseVMActivity<T>: AppCompatActivity() {
-
-    var viewModel: TaskViewModel? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = getViewModel()
-    }
+abstract class BaseVMActivity<T : ViewModel>: AppCompatActivity() {
 
     abstract fun <T : ViewModel> createViewModel(): T
 
-    private inline fun <reified T : ViewModel> getViewModel(): T? {
+    inline fun <reified T : ViewModel> getViewModel(): T {
         return ViewModelProvider(this, BaseViewModelProvider()).get(T::class.java)
     }
 
