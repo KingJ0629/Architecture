@@ -1,6 +1,5 @@
-package com.dh.task.view
+package com.dh.core.base
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
