@@ -1,12 +1,12 @@
 package com.dh.task.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dh.core.Constants
 import com.dh.task.R
-import com.dh.task.databinding.TasksActivityBinding
+import com.dh.task.data.source.TasksRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.tasks_activity.*
 import javax.inject.Inject
@@ -16,16 +16,23 @@ import javax.inject.Inject
  * Description
  */
 @AndroidEntryPoint
-class TaskDetailActivity : AppCompatActivity() {
+class TaskDetailActivity : BaseVMActivity<TaskViewModel>() {
 
     @Inject
-    lateinit var viewModel: TaskViewModel
+    lateinit var tasksRepository: TasksRepository
+
+    override fun <T : ViewModel> createViewModel(): T {
+        return TaskViewModel(tasksRepository) as T
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: TasksActivityBinding = DataBindingUtil.setContentView(this, R.layout.tasks_activity)
-        binding.viewModel = viewModel
-        viewModel.loadTasks()
+        setContentView(R.layout.tasks_activity)
+
+        viewModel?.description?.observe(this, Observer {
+            descriptionView.text = it
+        })
+        viewModel?.loadTasks()
 
         clickLayout.setOnClickListener {
             ARouter.getInstance().build(Constants.TEST_ACTIVITY).navigation()

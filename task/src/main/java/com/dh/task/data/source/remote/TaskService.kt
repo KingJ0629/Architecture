@@ -12,4 +12,7 @@ interface TaskService {
 
     @GET("group/{id}/users")
     fun taskList(@Path("id") taskId: Int): Call<List<String>>
+
+    @GET("group/{id}/users")
+    suspend fun taskListCoroutine(@Path("id") taskId: Int): Call<List<String>>
 }

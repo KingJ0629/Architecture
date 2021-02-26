@@ -1,35 +1,30 @@
 package com.dh.task.view
 
-import android.content.Context
-import androidx.databinding.BaseObservable
-import androidx.databinding.ObservableArrayList
-import androidx.databinding.ObservableField
-import androidx.databinding.ObservableList
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.dh.core.callback.DataCallback
-import com.dh.task_api.entity.Task
 import com.dh.task.data.source.TasksRepository
-import dagger.hilt.android.qualifiers.ActivityContext
-import javax.inject.Inject
+import com.dh.task_api.entity.Task
 
 /**
  * Created by Jin on 2021/2/25.
  * Description VM
  */
-class TaskViewModel @Inject constructor(@ActivityContext context: Context, tasksRepository: TasksRepository): BaseObservable() {
+class TaskViewModel constructor(tasksRepository: TasksRepository): ViewModel() {
 
-    val items: ObservableList<Task> = ObservableArrayList()
-    val description = ObservableField<String>()
+    val items: MutableLiveData<MutableList<Task>> = MutableLiveData<MutableList<Task>>()
+    val description = MutableLiveData<String>()
 
     private val mTasksRepository: TasksRepository = tasksRepository
-    private val mContext: Context = context.applicationContext
 
     fun loadTasks() {
         mTasksRepository.getTasks(object : DataCallback<MutableList<Task>?> {
             override fun onDataLoaded(data: MutableList<Task>?) {
                 data?.let {
-                    items.clear()
-                    items.addAll(data)
-                    description.set(items[0].description)
+                    clearData(items)
+                    items.value?.clear()
+                    items.value = data
+                    description.value = items.value!![0].description
                 }
             }
 
@@ -37,5 +32,10 @@ class TaskViewModel @Inject constructor(@ActivityContext context: Context, tasks
                 // do someThings
             }
         })
+    }
+
+    private fun <T> clearData(liveData: MutableLiveData<MutableList<T>>) {
+        val value = liveData.value
+        value?.clear()
     }
 }

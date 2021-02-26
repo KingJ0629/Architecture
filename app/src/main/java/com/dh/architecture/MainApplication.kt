@@ -14,8 +14,8 @@ class MainApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        ARouter.openLog();     // 打印日志
-        ARouter.openDebug()
+//        ARouter.openLog();     // 打印日志
+//        ARouter.openDebug()
         ARouter.init(this)
     }
 }
