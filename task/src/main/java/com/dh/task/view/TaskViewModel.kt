@@ -21,7 +21,6 @@ class TaskViewModel constructor(tasksRepository: TasksRepository): ViewModel() {
         mTasksRepository.getTasks(object : DataCallback<MutableList<Task>?> {
             override fun onDataLoaded(data: MutableList<Task>?) {
                 data?.let {
-                    clearData(items)
                     items.value?.clear()
                     items.value = data
                     description.value = items.value!![0].description
@@ -32,10 +31,5 @@ class TaskViewModel constructor(tasksRepository: TasksRepository): ViewModel() {
                 // do someThings
             }
         })
-    }
-
-    private fun <T> clearData(liveData: MutableLiveData<MutableList<T>>) {
-        val value = liveData.value
-        value?.clear()
     }
 }
