@@ -12,8 +12,13 @@ import com.dh.task_api.entity.Task
  */
 class TaskViewModel constructor(tasksRepository: TasksRepository): ViewModel() {
 
-    val items: MutableLiveData<MutableList<Task>> = MutableLiveData<MutableList<Task>>()
-    val description = MutableLiveData<String>()
+    val items: MutableLiveData<MutableList<Task>> by lazy {
+        MutableLiveData<MutableList<Task>>()
+    }
+
+    val description: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
 
     private val mTasksRepository: TasksRepository = tasksRepository
 
