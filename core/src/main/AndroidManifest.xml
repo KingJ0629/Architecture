@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dh.core">
 
-    /
+    <application android:name=".application.MainApplication" />
 </manifest>

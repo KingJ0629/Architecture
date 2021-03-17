@@ -44,11 +44,11 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:2.28-alpha"
     kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
-//    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-//    kapt "androidx.hilt:hilt-compiler:1.0.0-alpha03"
 
     compileOnly project(path: ':task-api')
 
     compileOnly 'com.alibaba:arouter-api:1.5.1'
     kapt 'com.alibaba:arouter-compiler:1.5.1'
+
+    kapt 'com.google.auto.service:auto-service:1.0-rc7'
 }
