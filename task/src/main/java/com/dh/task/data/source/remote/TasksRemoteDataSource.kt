@@ -22,7 +22,26 @@ class TasksRemoteDataSource @Inject constructor(taskService: TaskService) : Task
 
     override fun getTasks(callback: DataCallback<MutableList<Task>?>) {
         callback.onDataLoaded(Lists.newArrayList(mTasksServiceData.values))
+
         mTaskService.taskList(1)
+
+        /********************* Retrofit请求伪代码 ***************************************************
+
+
+         RetrofitHelper.call(mTaskService.taskList(1), CallBack() {
+            override fun success(list: MutableList<Task>) {
+                list.forEach {
+                    it.hasTitle()
+                }
+            }
+
+            override fun error(code: String) {
+                if (code === 10086) {}
+            }
+         })
+
+
+         ******************************************************************************************/
     }
 
     override fun saveTask(task: Task) {

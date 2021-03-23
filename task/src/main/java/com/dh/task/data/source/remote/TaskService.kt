@@ -1,5 +1,6 @@
 package com.dh.task.data.source.remote
 
+import com.dh.task_api.entity.Task
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,8 +12,8 @@ import retrofit2.http.Path
 interface TaskService {
 
     @GET("group/{id}/users")
-    fun taskList(@Path("id") taskId: Int): Call<List<String>>
+    fun taskList(@Path("id") taskId: Int): Call<MutableList<Task>>
 
     @GET("group/{id}/users")
-    suspend fun taskListCoroutine(@Path("id") taskId: Int): Call<List<String>>
+    suspend fun taskListCoroutine(@Path("id") taskId: Int): Call<MutableList<Task>>
 }
