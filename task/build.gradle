@@ -43,6 +43,7 @@ dependencies {
     api project(path: ':core')
 
     implementation "com.google.dagger:hilt-android:2.28-alpha"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
 
     compileOnly project(path: ':task-api')

@@ -7,8 +7,10 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dh.core.Constants
+import com.dh.task_api.constant.TaskConstants
 import com.dh.task_api.service.HelloService
 import com.dh.test.R
+import kotlinx.android.synthetic.main.test_view.*
 
 
 /**
@@ -30,6 +32,8 @@ class TestDetailActivity: AppCompatActivity() {
 
         val result = helloService?.sayHello("jack")
         Log.i("msg", result)
+
+        middleView.setOnClickListener { ARouter.getInstance().build(TaskConstants.TaskDetailActivity).navigation() }
     }
 
 }
